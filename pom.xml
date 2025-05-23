@@ -2,38 +2,60 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>io.github.rosestack</groupId>
+        <artifactId>rose-build</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath/>
+    </parent>
     <groupId>com.mycompany.app</groupId>
-    <artifactId>maven-site-github-example</artifactId>
-    <packaging>jar</packaging>
-    <version>1.0-SNAPSHOT</version>
-    <name>maven-site-github-example</name>
-    <url>http://maven.apache.org</url>
+    <artifactId>maven-site-example</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>maven-site-example</name>
+    <url>https://chensoul.github.io/maven-site-example</url>
+
+    <organization>
+        <name>rosestack.github.io</name>
+        <url>https://github.com/rosestack</url>
+    </organization>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>chensoul</id>
+            <name>chensoul</name>
+            <email>ichensoul@gmail.com</email>
+            <timezone>+8</timezone>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git@github.com:chensoul/maven-site-example.git</connection>
+        <developerConnection>scm:git:https://github.com/chensoul/maven-site-example.git</developerConnection>
+        <url>https://github.com/chensoul/maven-site-example</url>
+        <tag>HEAD</tag>
+    </scm>
 
     <distributionManagement>
         <snapshotRepository>
-            <id>ossrh</id>
-            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+            <id>central</id>
+            <name>central-snapshot</name>
+            <url>https://central.sonatype.com/repository/maven-snapshots/</url>
         </snapshotRepository>
-        <repository>
-            <id>ossrh</id>
-            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-        </repository>
         <site>
             <id>github</id>
-            <url>scm:git:git@github.com:chensoul/maven-site-github-example.git</url>
+            <url>scm:git:https://github.com/chensoul/maven-site-example.git</url>
         </site>
     </distributionManagement>
 
     <properties>
-        <java.version>8</java.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <maven.compiler.source>${java.version}</maven.compiler.source>
-        <maven.compiler.target>${java.version}</maven.compiler.target>
-
-        <scmpublish.content>${project.reporting.outputDirectory}</scmpublish.content>
-        <scmpublish.pubScmUrl>scm:git:https://github.com/chensoul/maven-site-github-example.git</scmpublish.pubScmUrl>
-        <scmpublish.scm.branch>gh-pages</scmpublish.scm.branch>
     </properties>
 
     <dependencies>
@@ -44,40 +66,6 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
-    <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-scm-publish-plugin</artifactId>
-                    <version>3.3.0</version>
-                    <configuration>
-                        <tryUpdate>true</tryUpdate>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-
-        <plugins>
-            <plugin>
-                <artifactId>maven-site-plugin</artifactId>
-                <version>4.0.0-M16</version>
-                <configuration>
-                    <locales>default,en,fr</locales>
-                </configuration>
-                <!-- Execution like this will pick up in the normal site cycle -->
-                <executions>
-                    <execution>
-                        <id>attach-descriptor</id>
-                        <goals>
-                            <goal>attach-descriptor</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
 
     <reporting>
         <plugins>
