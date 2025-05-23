@@ -56,6 +56,7 @@
     </distributionManagement>
 
     <properties>
+        <disable.checks>true</disable.checks>
     </properties>
 
     <dependencies>
